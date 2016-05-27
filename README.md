@@ -8,3 +8,5 @@ As an example, if I were to type ‘:)’ into the textbox, it would be replaced
 As an example for keyboard shortcuts, if I were to type ‘Cmd a’ or ‘Cmd n’, the size of the emoji and text in the entire textbox would be increased or decreased.
 
 To add more emoji all you have to do is add the a symobl and corresponding image in config.js
+
+Here is the JS fiddle link for the same: https://jsfiddle.net/9Lcjxomb/
