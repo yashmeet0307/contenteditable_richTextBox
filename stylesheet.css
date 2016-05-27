@@ -1,0 +1,226 @@
+.clearfix::after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.clearfix::after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+.com-o-detail {
+    clear: both;
+    padding-top: 7px;
+    position: relative;
+}
+.clearfix {
+    display: block;
+}
+
+.com-o-u::before {
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #edeae2;
+    border-top: 0 solid transparent;
+    content: " ";
+    height: 0;
+    left: -4px;
+    position: absolute;
+    top: 8px;
+    width: 0;
+    z-index: 1;
+}
+.com-o-u::after {
+    border-bottom: 8px solid transparent;
+    border-right: 7px solid #dfdace;
+    border-top: 0 solid transparent;
+    content: " ";
+    height: 0;
+    left: -6px;
+    position: absolute;
+    top: 7px;
+    width: 0;
+}
+.com-o-u {
+    background-color: #edeae2;
+    border: 1px solid #dfdace;
+    border-radius: 0 5px 5px;
+    color: #666;
+    float: left;
+    font-size: 15px;
+    font-family: sans-serif;
+    padding: 5px;
+    width: 80%;
+}
+
+.com-o-s::before {
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #ddf0df;
+    border-top: 0 solid transparent;
+    content: " ";
+    height: 0;
+    position: absolute;
+    right: -3.8px;
+    top: 8px;
+    width: 0;
+    z-index: 1;
+}
+.com-o-s::after {
+    border-bottom: 8px solid transparent;
+    border-left: 7px solid #b2d5b5;
+    border-top: 0 solid transparent;
+    content: " ";
+    height: 0;
+    position: absolute;
+    right: -6px;
+    top: 7px;
+    width: 0;
+}
+.com-o-s {
+    background-color: #ddf0df;
+    border: 1px solid #b2d5b5;
+    border-radius: 5px 0 5px 5px;
+    color: #666;
+    float: right;
+    font-size: 15px;
+    font-family: sans-serif;
+    padding: 5px;
+    width: 80%;
+}
+.com-date {
+    border-radius: 10px;
+    color: #cd5c5c;
+    float: right;
+    font-size: 10px;
+    margin-left: 10px;
+    padding: 0 7px;
+    text-align: center;
+}
+.com-comment-cont {
+    float: left;
+    width: 96%;
+}
+.com-n-comment {
+    border: 1px solid #ddd;
+    border-radius: 5px 0 5px 5px;
+    clear: both;
+    display: inline-block;
+    float: left;
+    font-size: 15px;
+    font-family: sans-serif;
+    height: 30px;
+    margin: 0 0 5px;
+    outline: medium none;
+    padding: 2px;
+    position: relative;
+    resize: none;
+    width: 98%;
+    overflow: auto;
+}
+.com-n-comment > span > img{
+    height: 15px;
+    width: 15px;
+}
+
+.com-textarea-icon::before {
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #fff;
+    border-top: 0 solid transparent;
+    content: " ";
+    height: 0;
+    position: absolute;
+    right: -3.8px;
+    top: 8px;
+    width: 0;
+    z-index: 1;
+}
+.com-textarea-icon::after {
+    border-bottom: 8px solid transparent;
+    border-left: 7px solid #ddd;
+    border-top: 0 solid transparent;
+    content: " ";
+    height: 0;
+    position: absolute;
+    right: -6px;
+    top: 7px;
+    width: 0;
+}
+.com-textarea-icon {
+    position: absolute;
+    top: 0;
+}
+
+.com-btn-cont {
+    float: right;
+    width: 4%;
+}
+
+.com-add-btn::before {
+    border-bottom: 7px solid transparent;
+    border-left: 15px solid #fff;
+    border-top: 7px solid transparent;
+    content: " ";
+    height: 0;
+    left: 13px;
+    position: absolute;
+    top: 10px;
+    width: 0;
+}
+.com-add-btn::after {
+    border-bottom: 2px solid transparent;
+    border-left: 8px solid #179fab;
+    border-top: 2px solid transparent;
+    content: " ";
+    height: 0;
+    left: 12px;
+    position: absolute;
+    top: 15px;
+    width: 0;
+}
+.com-add-btn {
+    background: #179fab none repeat scroll 0 0;
+    border-radius: 50px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    font: 1.6em/1.2em Arial,Helvetica,sans-serif;
+    height: 35px;
+    padding: 5px 12px;
+    position: relative;
+    width: 35px;
+}
+@media (max-width: 800px) {
+  .com-comment-cont{
+    width:94%; 
+    float:left; 
+  }
+  .com-btn-cont{
+    width:6%;
+    float:right;
+  }
+}
+@media (max-width: 600px) {
+  .com-comment-cont{
+    width:90%; 
+    float:left; 
+  }
+  .com-btn-cont{
+    width:10%;
+    float:right;
+  }
+}
+@media (max-width: 400px) {
+  .com-comment-cont{
+    width:85%; 
+    float:left; 
+  }
+  .com-btn-cont{
+    width:15%;
+    float:right;
+  }
+}
