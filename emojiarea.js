@@ -2,19 +2,21 @@
 			emojiArea = {
 				range : '',
 				selection : '',
-				map : [],
+				insertedNode : [],
+				emojiCount : 0,
 				childCount : document.getElementById('userInput').children.length,
 				init : function(){
             		this.initiateKeyUp();
             		this.initiatePress();
+            		//this.initiateDOMInsertion();
         		},
-				createIcon : function(emoji) {
+				createIcon : function(emoji,count) {
 					var filename = config.icons[emoji];
 					var path = config.path || '';
 					if (path.length && path.charAt(path.length - 1) !== '/') {
 						path += '/';
 					}
-					return '<span><img src="' + path + filename + '" alt=""></span>';
+					return '<span id=emoji'+count+'><img src="' + path + filename + '" alt=""></span>&#8203;';
 				},
 				reEscape : function(s) {
 		        	return s.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -38,25 +40,47 @@
 				},
 				initiateKeyUp : function(){
 					document.getElementById('userInput').addEventListener("keyup",function(e) {
+						console.log(e.keyCode);
 						var that = emojiArea;
 				    	var self = this;
-				    	var that = emojiArea;
+				    	//var that = emojiArea;
 				    	var html = this.innerHTML;
 				    	var previousHTML = html;
 				    	var emojis = config.icons;
 				    	if(e.keyCode !== 13){
 							for (var key in emojis) {
-								if (emojis.hasOwnProperty(key)) {
-									html = html.replace(new RegExp(that.reEscape(key), 'g'),that.createIcon(key));
+								if (emojis.hasOwnProperty(key) && html.indexOf(key) != -1) {
+									html = html.replace(new RegExp(that.reEscape(key), 'g'),that.createIcon(key,that.emojiCount));
+									that.emojiCount++;
 								}
 							}
 							if(previousHTML != html){
 								this.innerHTML = html;
 							}
+							if(that.emojiCount !== 0){
+								var selectChild = that.emojiCount-1;
+				    			selectChild = 'emoji'+selectChild;
+				    			var currentSpan = document.getElementById(selectChild);
+				    			var selectParentId = that.emojiCount-2;
+				    			selectParentId = 'emoji'+selectParentId;
+				    			if(currentSpan.parentElement.tagName === "SPAN" && currentSpan.parentElement.id == selectParentId){
+				    				var referenceNode = currentSpan.parentNode;
+				    				for(var i=0; i<currentSpan.parentElement.childNodes.length-1; i++){
+				    					if(currentSpan.parentElement.childNodes[i].tagName == "SPAN"){
+				    						currentSpan.parentElement.removeChild(currentSpan.parentElement.childNodes[i]);
+				    						referenceNode.parentNode.insertBefore(currentSpan, referenceNode.nextSibling);
+				    						break;
+				    					}
+				    				}
+				    			}
+							}
 				    		var newChildCount  = this.children.length;
-				    		if(that.childCount != newChildCount){
-				    			that.setEndOfContenteditable(this.children[newChildCount-1]);
-				    			that.childCount = newChildCount;
+				    		if(that.childCount != that.emojiCount){
+				    			var selectChild = that.emojiCount-1;
+				    			selectChild = 'emoji'+selectChild;
+				    			// if(document.getElementById(selectChild))
+				    			that.setEndOfContenteditable(document.getElementById(selectChild));
+				    			that.childCount = that.emojiCount;
 				    		}
 						}else if(e.keyCode == '13'){
 				    		var iDiv = document.createElement('div');
@@ -102,6 +126,13 @@
 							}
 						}
 					});
+				},
+				initiateDOMInsertion : function(){
+					document.getElementById('userInput').addEventListener("DOMNodeInserted", function(e) {
+						console.log(e.target);
+						if(e.target.tagName == "SPAN")
+					    emojiArea.insertedNode.push(e.target);
+					},true);
 				}
 			};
 		emojiArea.init();
