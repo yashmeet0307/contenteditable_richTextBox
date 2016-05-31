@@ -121,7 +121,11 @@
     width: 98%;
     overflow: auto;
 }
-.com-n-comment > span > img{
+.com-n-comment  > span >img{
+    height: 15px;
+    width: 15px;
+}
+.com-n-comment  > span >span >img{
     height: 15px;
     width: 15px;
 }
